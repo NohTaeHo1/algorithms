@@ -40,4 +40,5 @@ public class Student {
     public int getAverage(){
         return this.average;
     }
+
 }

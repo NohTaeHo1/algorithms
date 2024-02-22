@@ -1,2 +1,4 @@
-package mamberOOP;public class MemberService {
+package mamberOOP;
+
+public class MemberService {
 }

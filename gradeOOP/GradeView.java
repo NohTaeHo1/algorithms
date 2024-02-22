@@ -3,6 +3,7 @@ package gradeOOP;
 import java.util.Scanner;
 
 public class GradeView {
+    static String test;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Student st = new Student();
@@ -25,5 +26,6 @@ public class GradeView {
         System.out.println("영어점수 : " + st.getEnglish());
         System.out.println("수학점수 : " + st.getMath());
         System.out.println("평균 점수: " + st.getAverage());
+
     }
 }

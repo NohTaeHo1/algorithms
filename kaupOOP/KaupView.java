@@ -1,5 +1,6 @@
 package kaupOOP;
-import kaupOOP.Person;
+import mamberOOP.MemberModel;
+
 import java.util.Scanner;
 
 public class KaupView {
@@ -7,23 +8,19 @@ public class KaupView {
     public static void main(String[] args) {
         //카우프지수 구하는 객체지향으로 프로그램을 작성해 주세요
         Scanner sc = new Scanner(System.in);
-        Person person = new Person();
+        MemberModel person = new MemberModel(Math.floor((Math.random() * 50) + 150),
+                (Math.floor(Math.random() * 100) + 30));
 
-        System.out.print("이름을 적으세요 : ");
+        KaupService service = new KaupServiceImpl();
 
-        person.setName(sc.next());
-
-        person.setHeight();
-        person.setWeight();
-
-        person.createbmi();
-        person.createbodyMass();
+        double bmi = service.createbmi(); // bmi랑 bodymass 순간값->저장 불필요
+        String bodyMass = service.createbodyMass();
 
         System.out.println("이름 : "+person.getName());
         System.out.println("키 : "+person.getHeight());
         System.out.println("체중 : "+person.getWeight());
-        System.out.println("bmi : "+person.getbmi());
-        System.out.println("Bodymass :"+person.getBodyMass());
+        System.out.println("bmi : "+bmi);
+        System.out.println("Bodymass :"+bodyMass);
 
     }
 }
