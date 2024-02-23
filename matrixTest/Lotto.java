@@ -7,11 +7,10 @@ public class Lotto {
         Scanner sc = new Scanner(System.in);
 
         int[] lotto = new int[6];
-        System.out.println(lotto[2]);
 
-        lotto[0] = (int) (Math.random() * 45 + 1);
+        //lotto[0] = (int) (Math.random() * 45 + 1);
 
-        for (int i = 1; i < lotto.length; i++) {
+        for (int i = 0; i < lotto.length; i++) {
             lotto[i] = (int) (Math.random() * 45 + 1);
 
             for (int j = 0; j < i; j++) {
