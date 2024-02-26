@@ -1,19 +1,19 @@
 package matrixTest;
 
+import java.util.Scanner;
+
 public class LottoMatching2 {
-    /*로또 1~8번, 1등은 6개, 2등 5개, 3등 4개, 4등 3개, 2개 이하 꽝
-    구매로또 번호와 추첨로또 번호 모두 같이 출력
-    이하 출력 [1등 - 6개 맞춤, 2등 - 5개 맞춤, 3등 - 4개 맞춤, 4등 - 3개 맞춤, 꽝 - 2개 이하]d
-    사는거랑 추첨이랑 따로 구분
-     */
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
         int[] lotto;
-        int[] lottoAnswer;
 
-        lotto = createRandomNumber();
-        lotto = avoidDiscomfort(lotto);
+        //lotto = createRandomNumber();
+        //lotto = avoidDiscomfort(lotto);
+        lotto = BuyLotto.writeLotto();
         lotto = arrangement(lotto);
+
+        int[] lottoAnswer;
 
         lottoAnswer = createRandomNumber();
         lottoAnswer = avoidDiscomfort(lottoAnswer);
@@ -21,7 +21,7 @@ public class LottoMatching2 {
 
         int cNumber = sameNumber(lotto, lottoAnswer);
 
-        System.out.printf("구매 로또 번호와 추첨 로또 번호\n");
+        System.out.printf("\n구매 로또 번호와 추첨 로또 번호\n");
         for (int i = 0; i < 6; i++) {
             System.out.printf("%d\t", lotto[i]);
         }
@@ -44,7 +44,7 @@ public class LottoMatching2 {
         }
     }
 
-    private static int sameNumber(int[] lotto, int[] lottoAnswer) {
+    public static int sameNumber(int[] lotto, int[] lottoAnswer) {
         int cNumber = 0;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -56,7 +56,7 @@ public class LottoMatching2 {
         return cNumber;
     }
 
-    private static int[] arrangement(int[] lotto) {
+    public static int[] arrangement(int[] lotto) {
         for (int j = 0; j < lotto.length - 1; j++) {
             for (int i = 0; i < lotto.length - 1; i++) {
                 if (lotto[i] > lotto[i + 1]) {
@@ -69,7 +69,7 @@ public class LottoMatching2 {
         return lotto;
     }
 
-    private static int[] avoidDiscomfort(int[] lotto) {
+    public static int[] avoidDiscomfort(int[] lotto) {
         for (int i = 0; i < lotto.length; i++) {
             for (int j = 0; j < i; j++) {
                 if (lotto[i] == lotto[j]) {
@@ -81,11 +81,31 @@ public class LottoMatching2 {
         return lotto;
     }
 
-    private static int[] createRandomNumber() {
+    public static int[] createRandomNumber() {
         int[] randomNumber = new int[6];
         for (int i = 0; i < randomNumber.length; i++) {
             randomNumber[i] = (int) (Math.random() * 8 + 1);
         }
         return randomNumber;
+    }
+
+}
+    class BuyLotto {
+        public static int[] writeLotto() {
+            Scanner sc = new Scanner(System.in);
+            int[] writeLotto = new int[6];
+
+            for (int i = 0; i < writeLotto.length; i++) {
+                writeLotto[i] = sc.nextInt();
+            }
+            return writeLotto;
+        }
+    }
+
+class LottoDraw {
+    public static void printLotto(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.printf("%d \t", arr[i]);
+        }
     }
 }
