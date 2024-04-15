@@ -34,5 +34,6 @@ public class Baekjoon1181 {
             bw.write(a+"\n");
         }
         bw.flush();
+
     }
 }
